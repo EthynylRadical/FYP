@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>GET VIDEO</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+<button onclick="getMedia()">开启摄像头</button>
+<video id="video" width="500px" height="500px" autoplay="autoplay"></video>
+<canvas id="canvas" width="500px" height="500px"></canvas>
+<button onclick="takePhoto()">拍照</button>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>
+<script type="text/javascript" src="./src/jquery-1.9.1.js"></script>
+<script src="./src/takePhoto.js" type="text/javascript"></script>
+</body>
+</html>
