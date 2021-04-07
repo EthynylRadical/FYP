@@ -46,7 +46,7 @@ function recognizing(video) {
   $.ajax( {
     url: '/',
     type: 'POST',
-    // async: 'false',
+    async: 'false',
     data: {
       data:   JSON.stringify(grayImage.data),
       width:  currFrame.width,
@@ -55,12 +55,11 @@ function recognizing(video) {
   })
   .then(success, fail);
   }
-  setTimeout("recognizing(video)", 17);
+  setTimeout("recognizing(video)", 3000);
 
 
   function success(resData) {
     let res = new Object(JSON.parse(resData));
-    
     if(res.id === 0){
       console.log(`#################NO Match!!!!!##################`)
       return;
@@ -75,9 +74,8 @@ function recognizing(video) {
       item.data = new Uint8Array(Object.values(item.data));
     }
     
-    if (mVideo.src != `./objects/${res.id}.mp4`) {
-      mVideo.src = `./objects/${res.id}.mp4`;
-      mVideo.autoplay = "ture";
+    if (mVideo.src !==  "http://localhost:3000/objects/2.mp4") {
+      mVideo.setAttribute('src', `./objects/${res.id}.mp4`);
     }
     console.log(`${mVideo.src}`);
     function render() {
@@ -133,6 +131,7 @@ function recognizing(video) {
       }    
     }
     else console.log("**************NO PAT MATRIX!!!**************");
+      return 0;
     
   }
   
